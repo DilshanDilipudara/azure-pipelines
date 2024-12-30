@@ -2,8 +2,8 @@
 trigger:
 - main  # Trigger pipeline on commits to the 'main' branch
 
-pool:
-  vmImage: 'ubuntu-latest'  # Use a hosted Ubuntu agent
+# pool:
+#   vmImage: 'ubuntu-latest'  # Use a hosted Ubuntu agent
 
 steps:
 - script: echo "Hello, World!"  # Print a message
