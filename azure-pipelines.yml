@@ -11,8 +11,6 @@
 
 pool:
   name: Default  # Replace 'Default' with the name of your desired agent pool
-  demands:
-    - agent.os -equals Windows_NT  # Optional: Specify demands for the agent
 
 steps:
 - script: echo "Running on the specified agent pool"
