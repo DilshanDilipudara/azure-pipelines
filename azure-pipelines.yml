@@ -1,10 +1,18 @@
-# Azure Pipelines YAML
-trigger:
-- main  # Trigger pipeline on commits to the 'main' branch
+# # Azure Pipelines YAML
+# trigger:
+# - main  # Trigger pipeline on commits to the 'main' branch
+
+# pool:
+#   vmImage: Default  # Use a Default agent
+
+# steps:
+# - script: echo "Hello, World!"  # Print a message
+#   displayName: 'Print Hello, World!'
 
 pool:
-  vmImage: Default  # Use a Default agent
+  name: Default  # Replace 'Default' with the name of your desired agent pool
+  demands:
+    - agent.os -equals Windows_NT  # Optional: Specify demands for the agent
 
 steps:
-- script: echo "Hello, World!"  # Print a message
-  displayName: 'Print Hello, World!'
+- script: echo "Running on the specified agent pool"
