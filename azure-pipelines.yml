@@ -6,6 +6,11 @@ pool:
   name: Digital-Ocean  # Use a Default agent
 
 steps:
-- script: echo "Hello, World!"  # Print a message
-  displayName: 'Print Hello, World!'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
 
+- script: echo "Hello, World!"  # Print a message
+- script: python --version
