@@ -7,4 +7,4 @@ pool:
 
 steps:
 - script: echo "Hello, World!"  # Print a message
-- script: python --version
+- script: python3 --version
