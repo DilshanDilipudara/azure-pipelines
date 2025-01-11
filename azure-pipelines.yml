@@ -3,7 +3,7 @@ trigger:
 - main  # Trigger pipeline on commits to the 'main' branch
 
 pool:
-  vmImage: azure-agent-1  # Use a Default agent
+  name: Digital-Ocean  # Use a Default agent
 
 steps:
 - script: echo "Hello, World!"  # Print a message
