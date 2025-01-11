@@ -10,7 +10,7 @@ steps:
   inputs:
     versionSpec: '3.x'
     addToPath: true
-    architecture: 'x86'
+    architecture: 'x64'
 
 - script: echo "Hello, World!"  # Print a message
 - script: python --version
