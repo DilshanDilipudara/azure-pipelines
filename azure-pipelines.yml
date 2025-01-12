@@ -5,6 +5,12 @@ trigger:
 pool:
   name: Digital-Ocean  # Use a Default agent
 
+variables:
+- group: DIGITAL-OCEAN #use varible group
+
 steps:
-- script: echo "Hello, World!"  # Print a message
 - script: python3 --version
+  displayName: print python version
+
+- script: echo "Digital Ocean Token :\ $(TOKEN)"
+  displayName: print digital ocean token
