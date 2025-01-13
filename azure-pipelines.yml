@@ -67,3 +67,22 @@ stages:
   - job: condition_job
     steps:
       - script: echo "Condition is True."
+
+# Depends stage
+- stage: Depend_1
+  jobs:
+  - job: depend_job
+    steps:
+      - script: echo "This is main job"
+
+- stage: Depend_2
+  dependsOn: Depend_1
+  jobs:
+    # Depends stage
+    - job: Depend_job_1
+      steps:
+        - script: echo ""this is depend job-1"
+    - job: Depend_jobs_2
+      dependsOn: Depend_job_1
+      steps:
+        - script: echo ""this is depend job-2"
