@@ -3,20 +3,15 @@ trigger:
 - main  # Trigger pipeline on commits to the 'main' branch
 
 pool:
-  name: Digital-Ocean  # Use a Default agent
-
+  name: Digital-Ocean  # Use a self hosted agent 
+  
 variables:
 - group: DIGITAL-OCEAN #use varible group
 - name: ENVIRONMENT
   value: DEV
 
 
-# steps:
-# - script: echo "Digital Ocean Token :\ $(TOKEN)"
-#   displayName: print digital ocean token
-
-# azure pipeline jobs, steps, stages, job, step, stage
-
+#Stages
 stages:
 - stage: Build
   jobs: 
