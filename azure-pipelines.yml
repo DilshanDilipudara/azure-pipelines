@@ -81,8 +81,8 @@ stages:
     # Depends stage
     - job: Depend_job_1
       steps:
-        - script: echo ""this is depend job-1"
+        - script: echo "This is depend job-1"
     - job: Depend_jobs_2
       dependsOn: Depend_job_1
       steps:
-        - script: echo ""this is depend job-2"
+        - script: echo "This is depend job-2"
