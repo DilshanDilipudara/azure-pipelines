@@ -8,9 +8,33 @@ pool:
 variables:
 - group: DIGITAL-OCEAN #use varible group
 
-steps:
-- script: python3 --version
-  displayName: print python version
 
-- script: echo "Digital Ocean Token :\ $(TOKEN)"
-  displayName: print digital ocean token
+# steps:
+# - script: echo "Digital Ocean Token :\ $(TOKEN)"
+#   displayName: print digital ocean token
+
+# azure pipeline jobs, steps, stages, job, step, stage
+
+stages:
+- stage: Build
+  jobs: 
+  - job: PullBaseImage
+    steps:
+    - script: echo "Pull Base Image from Docker"
+  - job: BuildBinary
+    steps:
+      - script: echo "Build Binary"
+      - script: | 
+          echo "push to nexus"
+
+- stage: Deploy
+  jobs:
+  # Deploy Client 1
+  - job: DeployClient_1
+    steps:
+      - script: echo "Deploy Client-1 environment"
+  # Deploy Client 2
+  - job: DeployClient_2
+    steps:
+      - script: echo "Deploy Client-2 environment"
+      
