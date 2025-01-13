@@ -39,7 +39,7 @@ stages:
       - script: echo "Deploy Client-2 environment"
 
 # Task
-- stage:
+- stage: print_task
   jobs:
     - job: bash_task
       steps:
@@ -48,5 +48,5 @@ stages:
             targetType: 'inline'
             script: |
               # Write your commands here
-              echo 'Bash task'
+              echo 'This is bash task'
               date
