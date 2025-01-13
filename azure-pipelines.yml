@@ -17,7 +17,7 @@ stages:
   jobs:
     - job: PrintAgentTerraformVersion
       steps:
-        - bash: terraform version
+        - script: terraform version
 
 # - stage: Build
 #   jobs: 
