@@ -37,4 +37,16 @@ stages:
   - job: DeployClient_2
     steps:
       - script: echo "Deploy Client-2 environment"
-      
+
+# Task
+- stage:
+  jobs:
+    - job: bash_task
+      steps:
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: |
+              # Write your commands here
+              echo 'Bash task'
+              date
