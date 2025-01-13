@@ -59,3 +59,11 @@ stages:
     - job: print_env_varible
       steps:
         - script: echo $ENVIRONMENT
+
+# Condition
+- stage: condition
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+  jobs:
+  - job: condition_job
+    steps:
+      - script: echo "Condition is True."
