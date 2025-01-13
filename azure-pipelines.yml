@@ -4,7 +4,7 @@ trigger:
 
 pool:
   name: Digital-Ocean  # Use a self hosted agent 
-  
+
 variables:
 - group: DIGITAL-OCEAN #use varible group
 - name: ENVIRONMENT
@@ -12,72 +12,79 @@ variables:
 
 
 #Stages
-stages:
-- stage: Build
-  jobs: 
-  - job: PullBaseImage
-    steps:
-    - script: echo "Pull Base Image from Docker"
-  - job: BuildBinary
-    steps:
-      - script: echo "Build Binary"
-      - script: | 
-          echo "push to nexus"
-
-- stage: Deploy
+stages: 
+- stage: PrintTerraformVersion
   jobs:
-  # Deploy Client 1
-  - job: DeployClient_1
-    steps:
-      - script: echo "Deploy Client-1 environment"
-  # Deploy Client 2
-  - job: DeployClient_2
-    steps:
-      - script: echo "Deploy Client-2 environment"
-
-# Task
-- stage: print_task
-  jobs:
-    - job: bash_task
+    - job: PrintAgentTerraformVersion
       steps:
-        - task: Bash@3 #task@version
-          inputs:
-            targetType: 'inline' # script written as yaml. 
-            script: |
-              # Write your commands here
-              echo 'This is bash task'
-              date
+        - bash: terraform version
 
-# print varible
-- stage: print_varible
-  jobs:
-    - job: print_env_varible
-      steps:
-        - script: echo $ENVIRONMENT
+# - stage: Build
+#   jobs: 
+#   - job: PullBaseImage
+#     steps:
+#     - script: echo "Pull Base Image from Docker"
+#   - job: BuildBinary
+#     steps:
+#       - script: echo "Build Binary"
+#       - script: | 
+#           echo "push to nexus"
 
-# Condition
-- stage: condition
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
-  jobs:
-  - job: condition_job
-    steps:
-      - script: echo "Condition is True."
+# - stage: Deploy
+#   jobs:
+#   # Deploy Client 1
+#   - job: DeployClient_1
+#     steps:
+#       - script: echo "Deploy Client-1 environment"
+#   # Deploy Client 2
+#   - job: DeployClient_2
+#     steps:
+#       - script: echo "Deploy Client-2 environment"
 
-# Depends stage
-- stage: Depend_1
-  jobs:
-  - job: depend_job
-    steps:
-      - script: echo "This is main job"
+# # Task
+# - stage: print_task
+#   jobs:
+#     - job: bash_task
+#       steps:
+#         - task: Bash@3 #task@version
+#           inputs:
+#             targetType: 'inline' # script written as yaml. 
+#             script: |
+#               # Write your commands here
+#               echo 'This is bash task'
+#               date
 
-- stage: Depend_2
-  dependsOn: Depend_1
-  jobs:
-    # Depends stage
-    - job: Depend_job_1
-      steps:
-        - script: echo "This is depend job-1"
-    - job: Depend_jobs_2
-      dependsOn: Depend_job_1
-      steps:
-        - script: echo "This is depend job-2"
+# # print varible
+# - stage: print_varible
+#   jobs:
+#     - job: print_env_varible
+#       steps:
+#         - script: echo $ENVIRONMENT
+
+# # Condition
+# - stage: condition
+#   condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
+#   jobs:
+#   - job: condition_job
+#     steps:
+#       - script: echo "Condition is True."
+
+# # Depends stage
+# - stage: Depend_1
+#   jobs:
+#   - job: depend_job
+#     steps:
+#       - script: echo "This is main job"
+
+# - stage: Depend_2
+#   dependsOn: Depend_1
+#   jobs:
+#     # Depends stage
+#     - job: Depend_job_1
+#       steps:
+#         - script: echo "This is depend job-1"
+#     - job: Depend_jobs_2
+#       dependsOn: Depend_job_1
+#       steps:
+#         - script: echo "This is depend job-2"
+
