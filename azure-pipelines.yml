@@ -7,6 +7,8 @@ pool:
 
 variables:
 - group: DIGITAL-OCEAN #use varible group
+- name: ENVIRONMENT
+  value: DEV
 
 
 # steps:
@@ -43,10 +45,17 @@ stages:
   jobs:
     - job: bash_task
       steps:
-        - task: Bash@3
+        - task: Bash@3 #task@version
           inputs:
-            targetType: 'inline'
+            targetType: 'inline' # script written as yaml. 
             script: |
               # Write your commands here
               echo 'This is bash task'
               date
+
+# print varible
+- stage: print_varible
+  jobs:
+    - job: print_env_varible
+      steps:
+        - script: echo $ENVIRONMENT
